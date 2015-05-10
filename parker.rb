@@ -29,11 +29,15 @@ module Parker
       end
     end
 
+    def open_for_days(issue)
+      ((Time.now - issue.created_at).round) / 86400
+    end
+
     def p1_announcement
       if p1_issues.count > 0
         html += "There are currently <b>#{p1_issues.count}</b> Priority 1 bugs open:<br>"
         p2_issues.each do |i|
-          html += "<a href='#{i.html_url}'><b>##{i.number}</b>: #{i.title}<br><a>"
+          html += "<a href='#{i.html_url}'><b>##{i.number}</b>: #{i.title}</a> Open for <b>#{open_for_days(i)}</b> days.<br>"
         end
         html
       else
@@ -45,7 +49,7 @@ module Parker
       if p2_issues.count > 0
         html = "<br>There are currently <b>#{p2_issues.count}</b> Priority 2 bugs open:<br>"
         p2_issues.each do |i|
-          html += "<a href='#{i.html_url}'><b>##{i.number}</b>: #{i.title}<br><a>"
+          html += "<a href='#{i.html_url}'><b>##{i.number}</b>: #{i.title}</a> Open for <b>#{open_for_days(i)}</b> days.<br>"
         end
         html
       else
