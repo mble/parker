@@ -2,13 +2,13 @@ $LOAD_PATH.unshift(File.expand_path('../lib', __FILE__))
 
 Gem::Specification.new do |s|
   s.name        = 'parker'
-  s.summary     = 'HipChat GH Notifier for SalesMaster'
+  s.summary     = 'HipChat GH Priority Bug Notifier - Not Production Ready'
   s.author      = 'Matt Blewitt'
   s.email       = 'matthew@salesmaster.co.uk'
   s.license     = 'MIT'
   s.version     = '0.1.0'
   s.date        = Time.now.strftime('%Y-%m-%d')
-  s.description = 'HipChat GH Notifier for SalesMaster'#
+  s.description = 'HipChat GH Priority Bug Notifier - Not Production Ready'
 
   s.test_files  = `git ls-files spec/*`.split
   s.files       = `git ls-files`.split
@@ -27,4 +27,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'octokit', '~> 3.3'
   s.add_runtime_dependency 'rotp', '~> 2.0'
   s.add_runtime_dependency 'hipchat', '~> 1.5.1'
+  s.add_runtime_dependency 'dotenv', '~> 2.0.1'
 end

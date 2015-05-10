@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     parker (0.1.0)
+      dotenv (~> 2.0.1)
       hipchat (~> 1.5.1)
       octokit (~> 3.3)
       rotp (~> 2.0)
@@ -18,6 +19,7 @@ GEM
     coderay (1.1.0)
     diff-lcs (1.2.5)
     docile (1.1.5)
+    dotenv (2.0.1)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     fuubar (2.0.0)

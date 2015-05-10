@@ -1,3 +1,6 @@
+### project specific
+.env
+
 ### https://raw.github.com/github/gitignore/2bf7d8a77a73f7ef7089db449feafada0549af10/Global/SublimeText.gitignore
 
 # cache files for sublime text
