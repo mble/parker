@@ -62,6 +62,6 @@ module Parker
       Parker.p2_announcement
     end
 
-    Parker.hipchat["#{ENV['HIPCHAT_ROOM']}"].send('Parker',  Parker.announcements, color: 'purple')
+    Parker.hipchat["#{ENV['HIPCHAT_ROOM']}"].send('Parker',  Parker.announcements, color: 'purple', notify: true)
   end
 end
