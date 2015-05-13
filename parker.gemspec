@@ -11,6 +11,8 @@ Gem::Specification.new do |s|
   s.license       = 'MIT'
   s.version       = Parker::VERSION
   s.date          = Time.now.strftime('%Y-%m-%d')
+  s.bindir        = 'bin'
+  s.executables   << 'parker'
   s.description   = 'HipChat GH Priority Bug Notifier - Not Production Ready'
 
   s.test_files    = `git ls-files spec/*`.split
