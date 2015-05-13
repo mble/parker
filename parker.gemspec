@@ -1,17 +1,21 @@
-$LOAD_PATH.unshift(File.expand_path('../lib', __FILE__))
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'parker/version'
 
 Gem::Specification.new do |s|
-  s.name        = 'parker'
-  s.summary     = 'HipChat GH Priority Bug Notifier - Not Production Ready'
-  s.author      = 'Matt Blewitt'
-  s.email       = 'matthew@salesmaster.co.uk'
-  s.license     = 'MIT'
-  s.version     = '0.1.0'
-  s.date        = Time.now.strftime('%Y-%m-%d')
-  s.description = 'HipChat GH Priority Bug Notifier - Not Production Ready'
+  s.name          = 'parker'
+  s.summary       = 'HipChat GH Priority Bug Notifier - Not Production Ready'
+  s.author        = 'Matt Blewitt'
+  s.email         = 'matthew@salesmaster.co.uk'
+  s.license       = 'MIT'
+  s.version       = Parker::VERSION
+  s.date          = Time.now.strftime('%Y-%m-%d')
+  s.description   = 'HipChat GH Priority Bug Notifier - Not Production Ready'
 
-  s.test_files  = `git ls-files spec/*`.split
-  s.files       = `git ls-files`.split
+  s.test_files    = `git ls-files spec/*`.split
+  s.files         = `git ls-files`.split
+  s.require_paths = ['lib']
 
   s.required_ruby_version = '>= 2.1.0'
 
