@@ -30,7 +30,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'codeclimate-test-reporter', '~> 0.4', '>= 0.4.0'
   s.add_development_dependency 'yard', '~> 0.8.7'
   s.add_development_dependency 'reek'
-
+  s.add_development_dependency 'vcr', '~> 2.9.2'
+  s.add_development_dependency 'webmock', '>= 1.9'
   s.add_runtime_dependency 'octokit', '~> 3.3'
   s.add_runtime_dependency 'rotp', '~> 2.0'
   s.add_runtime_dependency 'hipchat', '~> 1.5.1'
