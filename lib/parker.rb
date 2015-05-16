@@ -51,7 +51,7 @@ module Parker
 
     # Calculates the time in days an issue has been open for
     # @param issue [Object] Github issue object
-    # @retun [Integer]
+    # @return [Integer]
     def open_for_days(issue)
       ((Time.now - issue.created_at).round) / 86_400
     end
