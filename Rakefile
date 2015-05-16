@@ -1,6 +1,7 @@
 require 'rspec/core/rake_task'
 require 'rubocop/rake_task'
 require 'bundler/gem_tasks'
+require 'reek/rake/task'
 
 RSpec::Core::RakeTask.new(:spec)
 
@@ -10,4 +11,9 @@ RuboCop::RakeTask.new(:rubocop) do |t|
   t.fail_on_error = true
 end
 
-task default: [:rubocop, :spec]
+Reek::Rake::Task.new do |t|
+  t.name = :reek
+  t.fail_on_error = false
+end
+
+task default: [:rubocop, :spec, :reek]

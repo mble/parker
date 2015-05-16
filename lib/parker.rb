@@ -42,7 +42,7 @@ module Parker
     # @param issues [Array] array containing issue objects
     # @return [String]
     def issues_info(issues)
-      html = ""
+      html = ''
       issues.each do |i|
         html += "<a href='#{i.html_url}'><b>##{i.number}</b>: #{i.title}</a> Open for <b>#{open_for_days(i)}</b> days.<br>"
       end
@@ -79,7 +79,7 @@ module Parker
         Parker.p2_announcement
     end
 
-    # Sends the collated announcements to the specified hipchat room as Parker, generating a notification 
+    # Sends the collated announcements to the specified hipchat room as Parker, generating a notification
     # within that room
     def go!
       Parker.hipchat["#{ENV['HIPCHAT_ROOM']}"].send('Parker',  Parker.announcements, color: 'purple', notify: true)
