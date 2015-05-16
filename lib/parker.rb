@@ -1,6 +1,7 @@
 require 'octokit'
 require 'dotenv'
 require 'hipchat'
+require 'erb' # HTTParty has an undeclared dependency on ERB
 require 'parker/client'
 
 # Main module for parker
