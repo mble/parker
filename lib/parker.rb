@@ -1,31 +1,19 @@
 require 'octokit'
 require 'dotenv'
 require 'hipchat'
+require 'parker/client'
 
 # Main module for parker
 module Parker
   class << self
     Dotenv.load
-
-    # Establish connection to Github via API
-    # @note requires a valid API token for Github
-    def github
-      @github ||= Octokit::Client.new(access_token: "#{ENV['GITHUB_TOKEN']}")
-    end
-
-    # Establish connection to Hipchat via API
-    # @note requires a valid API token for Hipchat (Room or User)
-    def hipchat
-      @hipchat ||= HipChat::Client.new(ENV['HIPCHAT_TOKEN'], api_version: 'v2')
-    end
-
     # Get a list of P1 bugs for a repo, requires the following ENV variables:
     #   REPO - specifies the Github repo to pull issues from
     #   BUG_LABEL - the label you use to identify bugs
     #   P1_LABEL - the label you use to identify priority 1 bugs
     # @return [Array] of P1 issues for the specified repo
     def p1_issues
-      github.list_issues("#{ENV['REPO']}", labels: "#{ENV['BUG_LABEL']},#{ENV['P1_LABEL']}")
+      Parker::Client.github.list_issues("#{ENV['REPO']}", labels: "#{ENV['BUG_LABEL']},#{ENV['P1_LABEL']}")
     end
 
     # Get a list of P1 bugs for a repo, requires the following ENV variables:
@@ -34,7 +22,7 @@ module Parker
     #   P2_LABEL - the label you use to identify priority 2 bugs
     # @return [Array] of P1 issues for the specified repo
     def p2_issues
-      github.list_issues("#{ENV['REPO']}", labels: "#{ENV['BUG_LABEL']},#{ENV['P2_LABEL']}")
+      Parker::Client.github.list_issues("#{ENV['REPO']}", labels: "#{ENV['BUG_LABEL']},#{ENV['P2_LABEL']}")
     end
 
     # Return a string containing the url, issue number, title and how long an issue has been open
@@ -82,7 +70,7 @@ module Parker
     # Sends the collated announcements to the specified hipchat room as Parker, generating a notification
     # within that room
     def go!
-      Parker.hipchat["#{ENV['HIPCHAT_ROOM']}"].send('Parker',  Parker.announcements, color: 'purple', notify: true)
+      Parker::Client.hipchat["#{ENV['HIPCHAT_ROOM']}"].send('Parker',  Parker.announcements, color: 'purple', notify: true)
     end
   end
 end
