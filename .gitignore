@@ -1,7 +1,6 @@
 ### project specific
 .env
 .gitignore
-Gemfile.lock
 
 ### https://raw.github.com/github/gitignore/2bf7d8a77a73f7ef7089db449feafada0549af10/Global/SublimeText.gitignore
 
@@ -80,7 +79,7 @@ build/
 
 # for a library or gem, you might want to ignore these files since the code is
 # intended to run in multiple environments; otherwise, check them in:
-# Gemfile.lock
+Gemfile.lock
 # .ruby-version
 # .ruby-gemset
 
