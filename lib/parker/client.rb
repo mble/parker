@@ -1,5 +1,6 @@
 require 'hipchat'
 require 'octokit'
+require 'erb' # HTTParty has an undeclared dependency on ERB
 
 module Parker
   # Client class for Parker

@@ -1,6 +1,5 @@
 require 'spec_helper'
-
-describe Parker do
+describe Parker::Issue do
   subject { described_class }
   let(:issue) { double(html_url: 'http://www.example.com', number: '3124', title: 'It broke', created_at: Time.now - 432_000) }
   describe '#open_for_days' do
@@ -21,18 +20,6 @@ describe Parker do
     end
     it 'returns a string containing the number of days an issue has been open for' do
       expect(subject.issues_info(issues)).to include('5')
-    end
-  end
-  describe '#p1_announcement' do
-    let(:p1_issues) { [issue] }
-    it 'returns a string containing the count of P1 issues' do
-      expect(subject.p1_announcement).to include('1')
-    end
-  end
-  describe '#p2_announcement' do
-    let(:p2_issues) { [issue] }
-    it 'returns a string containing the count of P1 issues' do
-      expect(subject.p2_announcement).to include('1')
     end
   end
 end
