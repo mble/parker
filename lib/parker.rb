@@ -1,4 +1,5 @@
 require 'dotenv'
+require 'colorize'
 require 'parker/client'
 require 'parker/announcement'
 
@@ -11,6 +12,16 @@ module Parker
     def message
       @message ||= Parker::Announcement.announcements
     end
+
+    # Returns pretty coloured string for command line
+    # @returns [String]
+    def cli_message
+      message = 'Message sent to '.green
+      message += "#{ENV['HIPCHAT_ROOM']}".yellow.bold
+      message += ' @ '.green
+      message += "#{Time.now}".yellow
+      message
+    end
     # Sends the collated announcements to the specified hipchat room as Parker,
     # generating a notification within that room
     def go!
@@ -20,6 +31,7 @@ module Parker
         color: 'purple', # Colour of message
         notify: true # Notification sent to room members
       )
+      puts cli_message
     end
   end
 end

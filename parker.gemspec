@@ -36,4 +36,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'rotp', '~> 2.0'
   s.add_runtime_dependency 'hipchat', '~> 1.5.1'
   s.add_runtime_dependency 'dotenv', '~> 2.0.1'
+  s.add_runtime_dependency 'colorize', '~> 0.7.7'
 end
