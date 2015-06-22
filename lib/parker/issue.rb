@@ -11,13 +11,22 @@ module Parker
       Parker::Client.github.list_issues("#{ENV['REPO']}", labels: "#{ENV['BUG_LABEL']},#{ENV['P1_LABEL']}")
     end
 
-    # Get a list of P1 bugs for a repo, requires the following ENV variables:
+    # Get a list of P2 bugs for a repo, requires the following ENV variables:
     #   REPO - specifies the Github repo to pull issues from
     #   BUG_LABEL - the label you use to identify bugs
     #   P2_LABEL - the label you use to identify priority 2 bugs
-    # @return [Array] of P1 issues for the specified repo
+    # @return [Array] of P2 issues for the specified repo
     def self.p2_issues
       Parker::Client.github.list_issues("#{ENV['REPO']}", labels: "#{ENV['BUG_LABEL']},#{ENV['P2_LABEL']}")
+    end
+
+    # Get a list of P3 bugs for a repo, requires the following ENV variables:
+    #   REPO - specifies the Github repo to pull issues from
+    #   BUG_LABEL - the label you use to identify bugs
+    #   P3_LABEL - the label you use to identify priority 3 bugs
+    # @return [Array] of P3 issues for the specified repo
+    def self.p3_issues
+      Parker::Client.github.list_issues("#{ENV['REPO']}", labels: "#{ENV['BUG_LABEL']},#{ENV['P3_LABEL']}")
     end
 
     # Return a string containing the url, issue number, title and how long an issue has been open
