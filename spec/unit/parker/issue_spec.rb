@@ -1,10 +1,10 @@
 require 'spec_helper'
 describe Parker::Issue do
-  subject { described_class }
+  subject { described_class.new }
   let(:issue) { double(html_url: 'http://www.example.com', number: '3124', title: 'It broke', created_at: Time.now - 432_000) }
   describe '#open_for_days' do
     it 'returns the number of days the issue is open for' do
-      expect(subject.open_for_days(issue)).to eq(5)
+      expect(subject.send(:open_for_days, issue)).to eq(5)
     end
   end
   describe '#issues_info' do

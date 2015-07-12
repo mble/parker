@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Parker::Announcement do
-  subject { described_class }
+  subject { described_class.new }
   let(:issue) { double(html_url: 'http://www.example.com', number: '3124', title: 'It broke', created_at: Time.now - 432_000) }
   describe '#p1_announcement' do
     let(:p1s) { [issue] }
