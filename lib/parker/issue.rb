@@ -14,7 +14,7 @@ module Parker
     #   P1_LABEL - the label you use to identify priority 1 bugs
     # @return [Array] of P1 issues for the specified repo
     def p1_issues
-      github.list_issues("#{ENV['REPO']}", labels: "#{ENV['BUG_LABEL']},#{ENV['P1_LABEL']}")
+      sla_filter github.list_issues("#{ENV['REPO']}", labels: "#{ENV['BUG_LABEL']},#{ENV['P1_LABEL']}")
     end
 
     # Get a list of P2 bugs for a repo, requires the following ENV variables:
@@ -23,7 +23,7 @@ module Parker
     #   P2_LABEL - the label you use to identify priority 2 bugs
     # @return [Array] of P2 issues for the specified repo
     def p2_issues
-      github.list_issues("#{ENV['REPO']}", labels: "#{ENV['BUG_LABEL']},#{ENV['P2_LABEL']}")
+      sla_filter github.list_issues("#{ENV['REPO']}", labels: "#{ENV['BUG_LABEL']},#{ENV['P2_LABEL']}")
     end
 
     # Get a list of P3 bugs for a repo, requires the following ENV variables:
@@ -32,7 +32,7 @@ module Parker
     #   P3_LABEL - the label you use to identify priority 3 bugs
     # @return [Array] of P3 issues for the specified repo
     def p3_issues
-      github.list_issues("#{ENV['REPO']}", labels: "#{ENV['BUG_LABEL']},#{ENV['P3_LABEL']}")
+      sla_filter github.list_issues("#{ENV['REPO']}", labels: "#{ENV['BUG_LABEL']},#{ENV['P3_LABEL']}")
     end
 
     # Return a string containing the url, issue number, title and how long an issue has been open
@@ -63,6 +63,14 @@ module Parker
     # @return [Integer]
     def open_for_days(issue)
       ((Time.now - issue.created_at).round) / 86_400
+    end
+
+    def sla_filter(issues)
+      if ENV['FULL_ISSUE_LIST']
+        issues
+      else
+        issues.reject { |issue| issue.labels.map(&:name).include?('QA Accepted') || open_for_days(issue) >= 90 }
+      end
     end
   end
 end

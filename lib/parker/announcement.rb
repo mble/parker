@@ -53,10 +53,19 @@ module Parker
       html
     end
 
+    def leader
+      if ENV['FULL_ISSUE_LIST']
+        "The following are *all* critical bugs, irrerespective of age or QA status\n\n"
+      else
+        "The following are *active* bugs i.e. not QA accepted or over 90 days old\n\n"
+      end
+    end
+
     # Collates the the two announcements into one message for ease of transmission
     # @return [String]
     def announcements(client)
-      p1_announcement(client) +
+      leader +
+        p1_announcement(client) +
         p2_announcement(client) +
         p3_announcement(client)
     end
