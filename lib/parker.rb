@@ -31,8 +31,14 @@ module Parker
         send_hipchat_message
       when 'slack'
         send_slack_message
+      else
+        puts 'ERROR: Please specify hipchat or slack as arguments.'.red
       end
-      puts cli_message options[:client]
+      begin
+        puts cli_message options[:client]
+      rescue
+        nil
+      end
     end
 
     def send_hipchat_message
@@ -54,7 +60,6 @@ module Parker
 
     def slack_channel_id
       slack = Parker::Client.new.slack
-      puts ENV['DEBUG']
       if ENV['DEBUG'] == 'true'
         slack.groups_list['groups'].detect { |g| g['name'] == 'parker-testbed' }.fetch('id')
       else
