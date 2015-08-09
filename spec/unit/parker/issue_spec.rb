@@ -7,19 +7,19 @@ describe Parker::Issue do
       expect(subject.send(:open_for_days, issue)).to eq(5)
     end
   end
-  describe '#issues_info' do
+  describe '#hipchat_issues_info' do
     let(:issues) { [issue] }
     it 'returns a string containing the url of an issue' do
-      expect(subject.issues_info(issues)).to include('http://www.example.com')
+      expect(subject.hipchat_issues_info(issues)).to include('http://www.example.com')
     end
     it 'returns a string containing the number of an issue' do
-      expect(subject.issues_info(issues)).to include('3124')
+      expect(subject.hipchat_issues_info(issues)).to include('3124')
     end
     it 'returns a string containing the title of an issue' do
-      expect(subject.issues_info(issues)).to include('It broke')
+      expect(subject.hipchat_issues_info(issues)).to include('It broke')
     end
     it 'returns a string containing the number of days an issue has been open for' do
-      expect(subject.issues_info(issues)).to include('5')
+      expect(subject.hipchat_issues_info(issues)).to include('5')
     end
   end
 end

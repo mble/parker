@@ -18,4 +18,12 @@ describe Parker::Client do
       expect(subject.hipchat).to eq(subject.hipchat)
     end
   end
+  describe '#slack' do
+    it 'creates a Slack::Web::Client' do
+      expect(subject.slack).to be_kind_of Slack::Web::Client
+    end
+    it 'correctly memoizses the client' do
+      expect(subject.slack).to eq(subject.slack)
+    end
+  end
 end

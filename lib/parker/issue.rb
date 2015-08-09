@@ -39,13 +39,21 @@ module Parker
     # for each issue in a collection of issues
     # @param issues [Array] array containing issue objects
     # @return [String]
-    def issues_info(issues)
+    def hipchat_issues_info(issues)
       html = ''
       issues.each do |issue|
         html += "<a href='#{issue.html_url}'><b>##{issue.number}</b>: #{issue.title}</a>
                 Open for <b>#{open_for_days(issue)}</b> days.<br>"
       end
       html
+    end
+
+    def slack_issues_info(issues)
+      text = ''
+      issues.each do |issue|
+        text += "<#{issue.html_url}|*##{issue.number}*: #{issue.title}> Open for *#{open_for_days(issue)}* days.\n"
+      end
+      text
     end
 
     private
