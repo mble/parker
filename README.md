@@ -27,5 +27,4 @@ HIPCHAT_ROOM="Some Room"
 ```
 
 Then just execute `bin/parker`. The output will be something like this:
-
 ![Imgur](http://i.imgur.com/SefzCoD.png)
